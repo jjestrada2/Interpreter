@@ -17,4 +17,6 @@ class RunTimeStack {
         framePointer.add(0);
     }
 
+    public void push(int valueToPush) {
+    }
 }
