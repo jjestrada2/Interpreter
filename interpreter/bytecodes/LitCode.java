@@ -17,11 +17,6 @@ public class LitCode extends ByteCode{
     }
 
 
-    @Override
-    public void load(String s) {
-
-    }
-
 
     @Override
     public void execute(VirtualMachine vm) {

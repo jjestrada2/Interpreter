@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public abstract class ByteCode {
 
-    abstract public void load(String s);
-
     abstract public void execute(VirtualMachine vm);
     public abstract String toString();
 

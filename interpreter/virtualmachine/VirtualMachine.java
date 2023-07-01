@@ -20,4 +20,37 @@ public class VirtualMachine {
     public void push(int valueToPush){
         this.runTimeStack.push(valueToPush);
     }
+
+    public void pushToFramePntrStck(int offset){
+        this.runTimeStack.newFrameAt(offset);
+    }
+    public void jump(int address){
+        this.runTimeStack.jump(address);
+    }
+
+    public void toggleRunning() {
+        isRunning = !isRunning;
+    }
+
+    public int frameSize() {
+        return this.runTimeStack.getFramePointerSize();
+    }
+
+    public void popRunTimeStack() {
+        this.runTimeStack.popRuntimeStack();
+    }
+
+    public void load(int offset) {
+        this.runTimeStack.load(offset);
+    }
+
+    public void store(int offset) {
+        runTimeStack.store(offset);
+    }
+
+    public void printTopRunTimeStack() {
+        System.out.println(this.runTimeStack.peek());
+    }
+
+
 }
