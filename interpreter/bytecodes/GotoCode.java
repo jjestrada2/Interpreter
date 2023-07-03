@@ -8,7 +8,7 @@ public  class GotoCode extends ByteCode{
     private String label;
     private int address;
     GotoCode(String []args){
-        this.label = args[2];
+        this.label = args[1];
     }
 
     public int getAddress() {

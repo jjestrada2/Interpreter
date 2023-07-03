@@ -34,9 +34,9 @@ public class Interpreter {
             ex.printStackTrace();
             System.exit(-2);
         }
-        program.resolveAddress();
+        program.resolveAddress(program);
         VirtualMachine virtualMachine = new VirtualMachine(program);
-       // virtualMachine.executeProgram();
+        virtualMachine.executeProgram();
         
     }
 

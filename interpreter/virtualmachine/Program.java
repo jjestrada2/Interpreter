@@ -1,9 +1,10 @@
 package interpreter.virtualmachine;
 
-import interpreter.bytecodes.ByteCode;
+import interpreter.bytecodes.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import java.util.Hashtable;
 import java.util.List;
 public class Program {
@@ -56,27 +57,32 @@ public class Program {
         labels = new HashMap<String,Integer>();
         int counterIndex = 0;
         for (ByteCode bc : program.program){
-            String byteCodeName = bc.toString().split(" ")[0];
-            if(byteCodeName.equals("LABEL")){
-                String byteCodeLabel = bc.toString().split(" ")[1];
-                labels.put(byteCodeLabel,counterIndex);
+            if(bc instanceof LabelCode){
+                labels.put(((LabelCode) program.getCode(counterIndex)).getLabel(), counterIndex);
             }
             counterIndex++;
         }
+        counterIndex = 0;
         for (ByteCode bc : program.program){
-            String byteCodeName = bc.toString().split(" ")[0];
-            if(byteCodeName.equals("GOTO")){
-                labels.get(bc.toString().split(" ")[1]);
-                //add address in the bytecode
-            } else if (byteCodeName.equals("CALL")) {
-                //add address in the bytecode
-                labels.get(bc.toString().split(" ")[1]);
-            } else if (byteCodeName.equals("FALSEBRANCH")) {
-                //add address in the bytecode
-                labels.get(bc.toString().split(" ")[1]);
+
+            if(bc instanceof GotoCode){
+                ((GotoCode) program.getCode(counterIndex)).setAddress(
+                        program.getAddress().get(((GotoCode) program.getCode(counterIndex)).getLabel()));
+            } else if (bc instanceof CallCode) {
+                ((CallCode) program.getCode(counterIndex)).setAddress(
+                        program.getAddress().get(((CallCode) program.getCode(counterIndex)).getLabel())
+                );
+
+            } else if (bc instanceof FalseBranchCode) {
+                program.getAddress().get(((FalseBranchCode) program.getCode(counterIndex)).getLabel());
             }
+            counterIndex++;
         }
 
 
+    }
+
+    public HashMap<String, Integer> getAddress(){
+        return this.labels;
     }
 }

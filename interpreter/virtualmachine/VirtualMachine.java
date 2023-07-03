@@ -1,5 +1,7 @@
 package interpreter.virtualmachine;
 
+import interpreter.bytecodes.ByteCode;
+
 import java.util.Stack;
 
 public class VirtualMachine {
@@ -9,7 +11,7 @@ public class VirtualMachine {
     private Program        program;
     private int            programCounter;
     private boolean        isRunning;
-
+    private ByteCode code;
     private boolean dumpOn;
 
     public VirtualMachine(Program program) {
@@ -18,7 +20,21 @@ public class VirtualMachine {
         this.returnAddress = new Stack<>();
         this.programCounter = 0;
     }
+    public void executeProgram(){
+        this.programCounter = 0;
+        this.isRunning = true;
+        this.dumpOn = true;
 
+        while(isRunning){
+            code = program.getCode(programCounter);
+            code.execute(this);
+            if(dumpOn){
+                System.out.println(code.toString());
+                runTimeStack.dump();
+            }
+            programCounter++;
+        }
+    }
     public void push(int valueToPush){
         this.runTimeStack.push(valueToPush);
     }
@@ -36,7 +52,7 @@ public class VirtualMachine {
     }
 
     public int popRunTimeStack() {
-        return this.runTimeStack.popRuntimeStack();
+        return this.runTimeStack.pop();
     }
 
     public void load(int offset) {
@@ -65,7 +81,7 @@ public class VirtualMachine {
     }
 
     public int runStackPop() {
-       return this.runTimeStack.popRuntimeStack();
+       return this.runTimeStack.pop();
     }
 
     public void runStackPopFrame() {
