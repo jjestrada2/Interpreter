@@ -10,6 +10,8 @@ public class VirtualMachine {
     private int            programCounter;
     private boolean        isRunning;
 
+    private boolean dumpOn;
+
     public VirtualMachine(Program program) {
         this.program = program;
         this.runTimeStack = new RunTimeStack();
@@ -24,9 +26,6 @@ public class VirtualMachine {
     public void pushToFramePntrStck(int offset){
         this.runTimeStack.newFrameAt(offset);
     }
-    public void jump(int address){
-        this.runTimeStack.jump(address);
-    }
 
     public void toggleRunning() {
         isRunning = !isRunning;
@@ -36,8 +35,8 @@ public class VirtualMachine {
         return this.runTimeStack.getFramePointerSize();
     }
 
-    public void popRunTimeStack() {
-        this.runTimeStack.popRuntimeStack();
+    public int popRunTimeStack() {
+        return this.runTimeStack.popRuntimeStack();
     }
 
     public void load(int offset) {
@@ -53,4 +52,31 @@ public class VirtualMachine {
     }
 
 
+    public void setPc(int address) {
+        this.programCounter = address;
+    }
+
+    public void returnAddressPush(int valueToPush){
+        this.returnAddress.push(valueToPush);
+    }
+
+    public int getPc(){
+        return this.programCounter;
+    }
+
+    public int runStackPop() {
+       return this.runTimeStack.popRuntimeStack();
+    }
+
+    public void runStackPopFrame() {
+        this.runTimeStack.popFrame();
+    }
+
+    public int returnAddressPop() {
+        return this.returnAddress.pop();
+    }
+
+    public void setDumpOn(boolean dumpOn) {
+        this.dumpOn = dumpOn;
+    }
 }

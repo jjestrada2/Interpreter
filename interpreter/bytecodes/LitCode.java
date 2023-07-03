@@ -2,9 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class LitCode extends ByteCode{
     private String id;
     private int valueToPush;
@@ -21,6 +18,7 @@ public class LitCode extends ByteCode{
     @Override
     public void execute(VirtualMachine vm) {
         vm.push(valueToPush);
+
     }
 
 

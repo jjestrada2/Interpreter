@@ -37,9 +37,6 @@ class RunTimeStack {
         }
         return i;
     }
-    public void jump(int address){
-
-    }
 
     public int load(int offset) {
         if(!this.runTimeStack.isEmpty()){
@@ -58,5 +55,15 @@ class RunTimeStack {
 
     public int peek() {
         return runTimeStack.get(runTimeStack.size()-1);
+    }
+
+
+    public void popFrame() {
+        int frameSize = framePointer.pop();
+        int rv = this.popRuntimeStack();
+        while (runTimeStack.size() - 1 > frameSize) {
+            this.popRuntimeStack();
+        }
+        this.push(rv);
     }
 }

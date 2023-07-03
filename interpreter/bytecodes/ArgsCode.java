@@ -2,8 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.ArrayList;
-
 public class ArgsCode extends ByteCode{
 
     private int numOfArgs;

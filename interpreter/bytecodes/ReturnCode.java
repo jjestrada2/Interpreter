@@ -2,19 +2,19 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-public class WriteCode extends ByteCode {
-    public WriteCode(String[] args) {
+public class ReturnCode extends ByteCode {
+    public ReturnCode(String[] args) {
 
     }
 
     @Override
     public void execute(VirtualMachine vm) {
-        vm.printTopRunTimeStack();
-
+        vm.runStackPopFrame();
+        vm.setPc(vm.returnAddressPop());
     }
 
     @Override
     public String toString() {
-        return "WRITE";
+        return "RETURN";
     }
 }

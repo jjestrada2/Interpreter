@@ -1,6 +1,5 @@
 package interpreter.bytecodes;
 
-import com.sun.jdi.InvalidTypeException;
 import interpreter.virtualmachine.VirtualMachine;
 
 import java.util.InputMismatchException;
@@ -29,7 +28,6 @@ public class ReadCode extends ByteCode {
             }
 
         }while(!readDone);
-
 
 
     }

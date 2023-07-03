@@ -14,7 +14,7 @@ public class LabelCode extends ByteCode{
     }
     @Override
     public void execute(VirtualMachine vm) {
-        return;
+
     }
 
     @Override

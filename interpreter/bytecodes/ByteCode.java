@@ -2,8 +2,6 @@ package interpreter.bytecodes;
 
 import interpreter.virtualmachine.VirtualMachine;
 
-import java.util.ArrayList;
-
 public abstract class ByteCode {
 
     abstract public void execute(VirtualMachine vm);
