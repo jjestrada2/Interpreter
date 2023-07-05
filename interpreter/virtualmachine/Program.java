@@ -74,7 +74,9 @@ public class Program {
                 );
 
             } else if (bc instanceof FalseBranchCode) {
-                program.getAddress().get(((FalseBranchCode) program.getCode(counterIndex)).getLabel());
+                ((FalseBranchCode) program.getCode(counterIndex)).setAddress(
+                        program.getAddress().get(((FalseBranchCode) program.getCode(counterIndex)).getLabel())
+                );
             }
             counterIndex++;
         }

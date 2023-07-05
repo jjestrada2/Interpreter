@@ -43,7 +43,7 @@ public final class ByteCodeLoader {
                 bc = ByteCode.getNewInstance(items[0],items);
                 program.addByteCode(bc);
 
-                System.out.println(Arrays.toString(items));
+               // System.out.println(Arrays.toString(items));
             }
         }catch (FileNotFoundException e){
             throw new RuntimeException(e);

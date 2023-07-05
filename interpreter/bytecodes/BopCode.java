@@ -63,6 +63,7 @@ public class BopCode extends ByteCode {
                 }
             }
             case "<" ->{
+
                 if (leftNum < rightNum) {
                     vm.push(1);
                 } else {

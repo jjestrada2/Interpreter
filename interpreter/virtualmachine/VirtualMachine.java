@@ -28,8 +28,10 @@ public class VirtualMachine {
         while(isRunning){
             code = program.getCode(programCounter);
             code.execute(this);
+
+           // this.runTimeStack.dump();
             if(dumpOn){
-                System.out.println(code.toString());
+                System.out.println(code);
                 runTimeStack.dump();
             }
             programCounter++;
@@ -64,7 +66,7 @@ public class VirtualMachine {
     }
 
     public void printTopRunTimeStack() {
-        System.out.println(this.runTimeStack.peek());
+        System.out.println("Result of program:"+this.runTimeStack.peek());
     }
 
 

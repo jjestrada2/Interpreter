@@ -18,6 +18,6 @@ public class ArgsCode extends ByteCode{
 
     @Override
     public String toString() {
-        return "ARGS" + this.numOfArgs;
+        return "ARGS " + this.numOfArgs;
     }
 }

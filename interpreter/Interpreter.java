@@ -30,8 +30,8 @@ public class Interpreter {
         try{
             program = byteCodeLoader.loadCodes();
         } catch(InvalidProgramException ex){
-            System.out.println(ex);
-            ex.printStackTrace();
+            //System.out.println(ex);
+            //ex.printStackTrace();
             System.exit(-2);
         }
         program.resolveAddress(program);

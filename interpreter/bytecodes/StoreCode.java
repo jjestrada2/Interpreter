@@ -8,7 +8,7 @@ public class StoreCode extends ByteCode {
     public StoreCode(String[] args) {
         this.offset = Integer.parseInt(args[1]);
         if(args.length == 3){
-            this.identifier = args[3];
+            this.identifier = args[2];
         }
     }
 
@@ -20,9 +20,9 @@ public class StoreCode extends ByteCode {
 
     @Override
     public String toString() {
-        String base = "STORE" + this.offset;
+        String base = "STORE " + this.offset;
         if(this.identifier != null){
-            base += this.identifier;
+            base += " " + this.identifier;
         }
         return base;
     }

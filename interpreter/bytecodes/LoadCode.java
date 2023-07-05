@@ -21,7 +21,7 @@ public class LoadCode extends ByteCode{
 
     @Override
     public String toString() {
-        String base = "LOAD" + offset;
+        String base = "LOAD " + offset;
         if(id != null){
             base = base + id;
         }

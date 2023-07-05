@@ -42,16 +42,16 @@ class RunTimeStack {
 
     public int load(int offset) {
         int temp = 0;
-        if(!this.runTimeStack.isEmpty()){
+        //if(!this.runTimeStack.isEmpty()){
             temp = runTimeStack.get(framePointer.peek()+offset);
             this.runTimeStack.add(temp);
-        }
+        //}
         return temp;
     }
 
     public int store(int currentOffset) {
         int value = pop();
-        int  offset = runTimeStack.size() - currentOffset -1;
+        int  offset = this.framePointer.peek() + currentOffset ;
         runTimeStack.set(offset,value);
         return value;
     }
@@ -75,15 +75,15 @@ class RunTimeStack {
         // Print the runtime stack, frames separated by brackets and
         // variables within frames separated by commas
 
-        ArrayList<Integer> frames = new ArrayList<Integer>();
-        for (int i = 0; i < framePointer.size(); i++) {
-            frames.add(framePointer.pop());
-            Collections.reverse(frames); // Frames as an ArrayList
-        }
-        // push the items from frames back into the framePointer stack
-        for (int i = 0; i < frames.size(); i++) {
-            framePointer.push(frames.get(i));
-        }
+//        ArrayList<Integer> frames = new ArrayList<Integer>();
+//        for (int i = 0; i < framePointer.size(); i++) {
+//            frames.add(framePointer.pop());
+//            Collections.reverse(frames); // Frames as an ArrayList
+//        }
+//        // push the items from frames back into the framePointer stack
+//        for (int i = 0; i < frames.size(); i++) {
+//            framePointer.push(frames.get(i));
+//        }
         // Use an external iterator variable to track position in frames ArrayList
         int j = 1;
         // Open with a bracket,
@@ -93,7 +93,7 @@ class RunTimeStack {
             for (int i = 0; i < runTimeStack.size(); i++) {
                 output = output + runTimeStack.get(i) + ",";
                 // Add in brackets where necessary
-                if (frames.size() > j && i == frames.get(j)) {
+                if (this.framePointer.size() > j && i == this.framePointer.get(j)) {
                     output = output + "] [";
                     j++;
                 }
