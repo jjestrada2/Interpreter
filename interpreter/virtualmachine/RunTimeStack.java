@@ -64,7 +64,7 @@ class RunTimeStack {
     public void popFrame() {
         int frameSize = framePointer.pop();
         int rv = this.pop();
-        while (runTimeStack.size() - 1 > frameSize) {
+        while (runTimeStack.size()  > frameSize) {
             this.pop();
         }
         this.push(rv);
@@ -87,7 +87,7 @@ class RunTimeStack {
         // Use an external iterator variable to track position in frames ArrayList
         int j = 1;
         // Open with a bracket,
-        if (runTimeStack.size() > 0) {
+       // if (runTimeStack.size() > 0) {
             String output = "[";
             // Then print every item in the runTimeStack
             for (int i = 0; i < runTimeStack.size(); i++) {
@@ -99,10 +99,11 @@ class RunTimeStack {
                 }
             }
             // Trim closing comma
-            output = output.substring(0, output.length() - 1);
+          //6
+        // output = output.substring(0, output.length() - 1);
             // Close with another bracket
             output = output + "]";
             System.out.println(output);
         }
-    }
+    //}
 }
