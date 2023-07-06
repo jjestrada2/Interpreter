@@ -91,7 +91,8 @@ class RunTimeStack {
             String output = "[";
             // Then print every item in the runTimeStack
             for (int i = 0; i < runTimeStack.size(); i++) {
-                output = output + runTimeStack.get(i) + ",";
+                output = output + runTimeStack.get(i)+",";
+
                 // Add in brackets where necessary
                 if (this.framePointer.size() > j && i == this.framePointer.get(j)) {
                     output = output + "] [";
