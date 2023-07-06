@@ -1,7 +1,7 @@
 # CSC 413 - Project Two - The Interpreter
 
-## Student Name  : Name here
+## Student Name  : Juan Estrada
 
-## Student ID    : ID here
+## Student ID    : 923058731
 
-## Student Email : Email here
+## Student Email : jestradazuluaga@sfsu.edu
